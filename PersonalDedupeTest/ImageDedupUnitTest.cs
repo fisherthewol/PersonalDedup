@@ -14,7 +14,7 @@ public class ImageDedupUnitTest
     public void KnownDifferentImagesArentDuplicate(string image1, string image2)
     {
         var x = Assembly.GetExecutingAssembly().GetManifestResourceStream(image1) ?? throw new NullReferenceException($"image1 returned null. string: {image1}");
-        var y = Assembly.GetExecutingAssembly().GetManifestResourceStream(image2) ?? throw new NullReferenceException($"image2 returned null. string: {image2}");;
-        Assert.False(PersonalDedupeLib.IsImageDuplicate(x, y));
+        var y = Assembly.GetExecutingAssembly().GetManifestResourceStream(image2) ?? throw new NullReferenceException($"image2 returned null. string: {image2}");
+        Assert.False(ImageDedup.IsImageDuplicate(x, y));
     }
 }

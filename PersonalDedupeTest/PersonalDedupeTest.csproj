@@ -28,4 +28,8 @@
       <EmbeddedResource Include="HNI_0064.JPG" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\PersonalDedupeLib\PersonalDedupeLib.csproj" />
+    </ItemGroup>
+
 </Project>
