@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalDedupeUI", "Persona
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalDedupeTest", "PersonalDedupeTest\PersonalDedupeTest.csproj", "{688F42B9-8FA4-490D-8BCA-087ACB50DB8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalDedupeLib", "PersonalDedupeLib\PersonalDedupeLib.csproj", "{88BFC130-EB97-442E-9E2F-0FEB0059F430}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{688F42B9-8FA4-490D-8BCA-087ACB50DB8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{688F42B9-8FA4-490D-8BCA-087ACB50DB8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{688F42B9-8FA4-490D-8BCA-087ACB50DB8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88BFC130-EB97-442E-9E2F-0FEB0059F430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88BFC130-EB97-442E-9E2F-0FEB0059F430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88BFC130-EB97-442E-9E2F-0FEB0059F430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88BFC130-EB97-442E-9E2F-0FEB0059F430}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
