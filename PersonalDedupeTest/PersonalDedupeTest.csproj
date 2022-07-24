@@ -23,9 +23,13 @@
 
     <ItemGroup>
       <None Remove="HNI_0063.JPG" />
-      <EmbeddedResource Include="HNI_0063.JPG" />
+      <Content Include="HNI_0063.JPG">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
       <None Remove="HNI_0064.JPG" />
-      <EmbeddedResource Include="HNI_0064.JPG" />
+      <Content Include="HNI_0064.JPG">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>

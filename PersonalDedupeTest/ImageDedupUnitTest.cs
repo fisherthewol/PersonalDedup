@@ -13,8 +13,8 @@ public class ImageDedupUnitTest
     [InlineData("HNI_0063.JPG", "HNI_0064.JPG")]
     public void KnownDifferentImagesArentDuplicate(string image1, string image2)
     {
-        var x = Assembly.GetExecutingAssembly().GetManifestResourceStream(image1) ?? throw new NullReferenceException($"image1 returned null. string: {image1}");
-        var y = Assembly.GetExecutingAssembly().GetManifestResourceStream(image2) ?? throw new NullReferenceException($"image2 returned null. string: {image2}");
-        Assert.False(ImageDedup.IsImageDuplicate(x, y));
+        FileInfo fiImage1 = new FileInfo(image1);
+        FileInfo fiImage2 = new FileInfo(image2);
+        Assert.False(ImageDedup.IsImageDuplicate(fiImage1, fiImage2));
     }
 }
