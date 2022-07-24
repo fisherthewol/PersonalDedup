@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalDedupe", "PersonalDedupe\PersonalDedupe.csproj", "{41057463-AF18-47BC-A169-152B5E54FA51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalDedupeUI", "PersonalDedupeUI\PersonalDedupeUI.csproj", "{41057463-AF18-47BC-A169-152B5E54FA51}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalDedupeTest", "PersonalDedupeTest\PersonalDedupeTest.csproj", "{688F42B9-8FA4-490D-8BCA-087ACB50DB8F}"
 EndProject
