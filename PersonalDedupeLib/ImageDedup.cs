@@ -10,6 +10,11 @@ public class ImageDedup
     /// <returns>True if duplicate; false otherwise.</returns>
     public static bool IsImageDuplicate(FileInfo image1, FileInfo image2)
     {
+        if (!image1.Exists || !image2.Exists)
+        {
+            throw new ArgumentException("Image does not exist.");
+        }
+
         return true;
     }
 }
