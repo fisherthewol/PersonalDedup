@@ -10,11 +10,11 @@ public class ImageDedup
     /// <returns>True if duplicate; false otherwise.</returns>
     public static bool IsImageDuplicate(FileInfo image1, FileInfo image2)
     {
-        if (!image1.Exists || !image2.Exists)
-        {
-            throw new ArgumentException("Image does not exist.");
-        }
-
+        if (!image1.Exists || !image2.Exists) throw new ArgumentException("Image does not exist.");
+        // Check length is same:
+        if (image1.Length != image2.Length) return false;
+        // Check creation time:
+        if (image1.CreationTimeUtc != image2.CreationTimeUtc) return false;
         return true;
     }
 }
