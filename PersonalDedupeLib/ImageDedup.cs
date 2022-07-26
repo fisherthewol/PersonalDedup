@@ -15,7 +15,7 @@ public class ImageDedup
         // Check length is same:
         if (image1.Length == image2.Length) isLikelyDupe++;
         // Check creation time:
-        if (image1.CreationTimeUtc != image2.CreationTimeUtc) isLikelyDupe++;
+        if (image1.CreationTimeUtc == image2.CreationTimeUtc) isLikelyDupe++;
         return isLikelyDupe;
     }
 }
