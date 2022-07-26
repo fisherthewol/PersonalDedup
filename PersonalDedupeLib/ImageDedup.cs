@@ -17,7 +17,7 @@ public class ImageDedup
         // Check creation time:
         if (image1.CreationTimeUtc == image2.CreationTimeUtc) isLikelyDupe++;
         // Check extension:
-        if (image1.Extension == image2.Extension) isLikelyDupe++;
+        if (string.Equals(image1.Extension, image2.Extension, StringComparison.CurrentCultureIgnoreCase)) isLikelyDupe++;
         // Check names:
         if (image2.Name
                 .ToLowerInvariant()
