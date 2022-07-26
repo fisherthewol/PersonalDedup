@@ -34,6 +34,10 @@
       <Content Include="HNI_DUP.JPG">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
+      <None Remove="HNI_TIM.JPG" />
+      <Content Include="HNI_TIM.JPG">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>

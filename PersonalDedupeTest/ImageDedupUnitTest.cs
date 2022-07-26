@@ -31,4 +31,21 @@ public class ImageDedupUnitTest
         FileInfo fiImage2 = new FileInfo(image2);
         Assert.Equal(2, ImageDedup.ImagesLikelyDuplicate(fiImage1, fiImage2));
     }
+    
+    /// <summary>
+    /// Tests that two known-different images created at the same time get a likelihood of 2:
+    /// - Same extension
+    /// - Same creation time.
+    /// </summary>
+    /// <param name="image1">Filename of first image to test.</param>
+    /// <param name="image2">Filename of second image to test.</param>
+    [Theory]
+    [InlineData("HNI_0063.JPG", "HNI_TIM.JPG")]
+    public void KnownDifferentWithSameCreationTime(string image1, string image2)
+    {
+        FileInfo fiImage1 = new FileInfo(image1);
+        FileInfo fiImage2 = new FileInfo(image2);
+        fiImage2.CreationTimeUtc = fiImage1.CreationTimeUtc;
+        Assert.Equal(2, ImageDedup.ImagesLikelyDuplicate(fiImage1, fiImage2));
+    }
 }
