@@ -41,11 +41,10 @@ public class ImageDedupUnitTest
     /// <param name="image2">Filename of second image to test.</param>
     [Theory]
     [InlineData("HNI_0063.JPG", "HNI_TIM.JPG")]
-    public void KnownDifferentWithSameCreationTime(string image1, string image2)
+    public void TestCreationTimeComparison(string image1, string image2)
     {
         FileInfo fiImage1 = new FileInfo(image1);
-        FileInfo fiImage2 = new FileInfo(image2);
-        fiImage2.CreationTimeUtc = fiImage1.CreationTimeUtc;
+        FileInfo fiImage2 = new FileInfo(image2) { CreationTimeUtc = fiImage1.CreationTimeUtc };
         Assert.Equal(2, ImageDedup.ImagesLikelyDuplicate(fiImage1, fiImage2));
     }
 }
