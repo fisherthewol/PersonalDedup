@@ -47,4 +47,36 @@ public class ImageDedupUnitTest
         FileInfo fiImage2 = new FileInfo(image2) { CreationTimeUtc = fiImage1.CreationTimeUtc };
         Assert.Equal(2, ImageDedup.ImagesLikelyDuplicate(fiImage1, fiImage2));
     }
+    
+    /// <summary>
+    /// Tests that, when passed a non-existent file, it throws an ArgumentException.
+    /// </summary>
+    /// <param name="validImage">Filename of a valid image to test other parameter with.</param>
+    [Theory]
+    [InlineData("HNI_0063.JPG")]
+    public void NonExistentImageThrowsArgumentError(string validImage)
+    {
+        FileInfo fiValid = new FileInfo(validImage);
+        FileInfo fiNonExist = new FileInfo("BadFileNameDoesntExist.jpg");
+        // Test with parameter image1 as bad:
+        Assert.Throws<ArgumentException>(() => ImageDedup.ImagesLikelyDuplicate(fiNonExist, fiValid));
+        // Test with parameter image2 as bad:
+        Assert.Throws<ArgumentException>(() => ImageDedup.ImagesLikelyDuplicate(fiValid, fiNonExist));
+        // Test with both parameters as bad:
+        Assert.Throws<ArgumentException>(() => ImageDedup.ImagesLikelyDuplicate(fiNonExist, fiNonExist));
+    }
+    
+    /// <summary>
+    /// Tests that, when passed an existing file, it does not throw an ArgumentException.
+    /// https://peterdaugaardrasmussen.com/2019/10/27/xunit-how-to-check-if-a-call-does-not-throw-an-exception/
+    /// </summary>
+    /// <param name="validImage">Filename of a valid image to test with.</param>
+    [Theory]
+    [InlineData("HNI_0063.JPG")]
+    public void ExistingImageThrowsArgumentError(string validImage)
+    {
+        FileInfo fiValid = new FileInfo(validImage);
+        var exception = Record.Exception(() => ImageDedup.ImagesLikelyDuplicate(fiValid, fiValid));
+        Assert.Null(exception);
+    }
 }
