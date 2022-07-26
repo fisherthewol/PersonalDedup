@@ -17,4 +17,13 @@ public class ImageDedupUnitTest
         FileInfo fiImage2 = new FileInfo(image2);
         Assert.Equal(1, ImageDedup.ImagesLikelyDuplicate(fiImage1, fiImage2));
     }
+    
+    [Theory]
+    [InlineData("HNI_0063.JPG", "HNI_DUP.JPG")]
+    public void KnownDuplicateImagesAreLengthEqual(string image1, string image2)
+    {
+        FileInfo fiImage1 = new FileInfo(image1);
+        FileInfo fiImage2 = new FileInfo(image2);
+        Assert.Equal(2, ImageDedup.ImagesLikelyDuplicate(fiImage1, fiImage2));
+    }
 }
