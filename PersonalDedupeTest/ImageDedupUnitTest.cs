@@ -1,5 +1,3 @@
-using System.Reflection;
-
 namespace PersonalDedupeTest;
 
 public class ImageDedupUnitTest
@@ -18,6 +16,13 @@ public class ImageDedupUnitTest
         Assert.Equal(1, ImageDedup.ImagesLikelyDuplicate(fiImage1, fiImage2));
     }
     
+    /// <summary>
+    /// Tests that two known-same images get a likelihood of 2:
+    /// - Same extension
+    /// - Same length
+    /// </summary>
+    /// <param name="image1">Filename of first image to test.</param>
+    /// <param name="image2">Filename of second image to test.</param>
     [Theory]
     [InlineData("HNI_0063.JPG", "HNI_DUP.JPG")]
     public void KnownDuplicateImagesAreLengthEqual(string image1, string image2)
