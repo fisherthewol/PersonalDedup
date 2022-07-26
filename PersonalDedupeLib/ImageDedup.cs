@@ -19,7 +19,12 @@ public class ImageDedup
         // Check extension:
         if (image1.Extension == image2.Extension) isLikelyDupe++;
         // Check names:
-        if (image2.Name.Contains(image1.Name) || image1.Name.Contains(image2.Name)) isLikelyDupe++;
+        if (image2.Name
+                .ToLowerInvariant()
+                .Contains(image1.Name.ToLowerInvariant()) 
+            || image1.Name
+                .ToLowerInvariant()
+                .Contains(image2.Name.ToLowerInvariant())) isLikelyDupe++;
         return isLikelyDupe;
     }
 }
