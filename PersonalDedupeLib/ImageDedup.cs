@@ -1,4 +1,4 @@
-﻿namespace PersonalDedupeLib;
+namespace PersonalDedupeLib;
 
 public class ImageDedup
 {
