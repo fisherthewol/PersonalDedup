@@ -49,7 +49,7 @@ public class ImageDedupUnitTest
     }
     
     /// <summary>
-    /// Tests that, when passed a non-existent file, it throws an ArgumentException.
+    /// Tests that, when passed a non-existent file, ImagesLikelyDuplicate throws an ArgumentException.
     /// </summary>
     /// <param name="validImage">Filename of a valid image to test other parameter with.</param>
     [Theory]
@@ -67,7 +67,7 @@ public class ImageDedupUnitTest
     }
     
     /// <summary>
-    /// Tests that, when passed an existing file, it does not throw an ArgumentException.
+    /// Tests that, when passed an existing file, ImagesLikelyDuplicate does not throw an ArgumentException.
     /// https://peterdaugaardrasmussen.com/2019/10/27/xunit-how-to-check-if-a-call-does-not-throw-an-exception/
     /// </summary>
     /// <param name="validImage">Filename of a valid image to test with.</param>
