@@ -4,7 +4,7 @@ public class ImageDedup: IFileDedup
 {
     public ImageDedup(int duplicateLevel)
     {
-        DuplicateLevel = duplicateLevel;
+        DuplicateLevel = duplicateLevel > 1 ? duplicateLevel : 1;
     }
 
     /// <summary>
@@ -33,10 +33,21 @@ public class ImageDedup: IFileDedup
         return isLikelyDupe;
     }
 
+    /// <summary>
+    /// Level at which files should be considered duplicate.
+    /// </summary>
     public int DuplicateLevel { get; }
 
+    /// <summary>
+    /// Given a list of files, return pairings that are likely duplicate; based on <see cref="DuplicateLevel"/>.
+    /// </summary>
+    /// <param name="list">List of files to check.</param>
+    /// <returns>List of pairings likely similar.</returns>
+    /// <exception cref="ArgumentException">Thrown if list is size 0 or 1; in these cases, nothing can be checked.</exception>
+    /// <exception cref="NotImplementedException"></exception>
     public List<(FileInfo, FileInfo)> LikelyDuplicatesFromList(List<FileInfo> list)
     {
+        if (list.Count is 0 or 1) throw new ArgumentException($"List was of size {list.Count}.");
         throw new NotImplementedException();
     }
 
