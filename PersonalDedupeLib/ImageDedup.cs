@@ -2,6 +2,11 @@ namespace PersonalDedupeLib;
 
 public class ImageDedup: IFileDedup
 {
+    public ImageDedup(int duplicateLevel)
+    {
+        DuplicateLevel = duplicateLevel;
+    }
+
     /// <summary>
     /// Compares details about images and returns whether they are duplicates.
     /// </summary>
@@ -27,6 +32,8 @@ public class ImageDedup: IFileDedup
                 .Contains(image2.Name.ToLowerInvariant())) isLikelyDupe++;
         return isLikelyDupe;
     }
+
+    public int DuplicateLevel { get; }
 
     public List<(FileInfo, FileInfo)> LikelyDuplicatesFromList(List<FileInfo> list)
     {
