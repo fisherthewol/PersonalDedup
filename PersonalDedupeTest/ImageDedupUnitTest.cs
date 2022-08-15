@@ -79,4 +79,25 @@ public class ImageDedupUnitTest
         var exception = Record.Exception(() => ImageDedup.ImagesLikelyDuplicate(fiValid, fiValid));
         Assert.Null(exception);
     }
+    
+    /// <summary>
+    /// Return data for testing with lists of filenames.
+    /// </summary>
+    /// <returns>IEnumerable for [MemberData].</returns>
+    public static IEnumerable<object[]> FileData(){
+        yield return new object[] { 2, new List<string>{ "HNI_0063.JPG", "HNI_0064.JPG", "HNI_DUP.JPG", "HNI_TIM.JPG" } };
+    }
+
+    /// <summary>
+    /// Tests that, when passed
+    /// </summary>
+    /// <param name="duplicateLevel">Similarity at which image should be considered duplicate.</param>
+    /// <param name="filenames">List of filesnames</param>
+    [Theory]
+    [MemberData(nameof(FileData))]
+    public void KnownSetReturnsExpectedDuplicateSetFromList(int duplicateLevel, List<string> filenames)
+    {
+        IFileDedup imageDedup = new ImageDedup(duplicateLevel);
+        throw new NotImplementedException();
+    }
 }
