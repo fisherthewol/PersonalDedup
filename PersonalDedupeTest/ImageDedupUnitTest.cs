@@ -85,19 +85,33 @@ public class ImageDedupUnitTest
     /// </summary>
     /// <returns>IEnumerable for [MemberData].</returns>
     public static IEnumerable<object[]> FileData(){
-        yield return new object[] { 2, new List<string>{ "HNI_0063.JPG", "HNI_0064.JPG", "HNI_DUP.JPG", "HNI_TIM.JPG" } };
+        yield return new object[] 
+            { 2, 
+                new List<string>{ "HNI_0063.JPG", "HNI_0064.JPG", "HNI_DUP.JPG", "HNI_TIM.JPG" },
+                new List<(FileInfo,FileInfo)> {
+                    (new FileInfo("HNI_0063.JPG"), new FileInfo("HNI_0063.JPG")),
+                    (new FileInfo("HNI_0064.JPG"), new FileInfo("HNI_TIM.JPG")),
+            
+                }
+            };
     }
 
     /// <summary>
-    /// Tests that, when passed
+    /// Tests that, when passed a list of images, <see cref="ImageDedup.LikelyDuplicatesFromList"/> returns expected duplicates.
     /// </summary>
     /// <param name="duplicateLevel">Similarity at which image should be considered duplicate.</param>
-    /// <param name="filenames">List of filesnames</param>
+    /// <param name="filenames">List of filenames to test.</param>
+    /// <param name="duplicates">Expected list of duplicates.</param>
     [Theory]
     [MemberData(nameof(FileData))]
-    public void KnownSetReturnsExpectedDuplicateSetFromList(int duplicateLevel, List<string> filenames)
+    public void KnownSetReturnsExpectedDuplicateSetFromList(int duplicateLevel, List<string> filenames, List<(FileInfo,FileInfo)> duplicates)
     {
         IFileDedup imageDedup = new ImageDedup(duplicateLevel);
-        throw new NotImplementedException();
+        var fi = from name in filenames select new FileInfo(name);
+        var x = imageDedup.LikelyDuplicatesFromList(fi.ToList());
+        foreach (var pair in duplicates)
+        {
+            Assert.Contains(pair, x);
+        }
     }
 }
